@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * In memory rest api.
+ */
 @RestController
 @RequestMapping("api/v1/students")
 public class StudentController {
@@ -20,7 +23,7 @@ public class StudentController {
     @GetMapping(path = "/{studentId}")
     public Student getStudent(@PathVariable("studentId") Integer studentId) {
         return STUDENTS.stream()
-                .filter(student -> studentId.equals(student.getStudentId()))
+                .filter(student -> studentId.equals(student.studentId()))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException(
                         "Student " + studentId + " does not exists"
